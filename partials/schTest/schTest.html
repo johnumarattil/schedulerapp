@@ -1,0 +1,66 @@
+<div ng-controller="testSchedulerController as tstSchCtrl" class="w3-card-2 w3-margin" style="max-width:800px;">
+	<header class="w3-container w3-light-grey w3-padding-16">
+    <h3>Test Schedulers</h3>
+  </header>
+  <div class="w3-container w3-light-grey w3-padding-16">
+
+
+
+	<div id="schedulerNameRow"  class="w3-row sch-row-element">
+      <div class="w3-col s2">
+        <div class="w3-left-align sch-label"><p>Scheduler Name: </p></div>
+      </div>
+      <div class="w3-col s10">
+        <select id="schedulerSelect" class="w3-select"
+        ng-options="scheduler.schedulerName for scheduler in schedulerList" ng-model="selectedScheduler" ng-change=selectScheduler(selectedScheduler)></select>
+      </div>
+    </div>
+
+
+    
+    <div id="schedulerTimeRow" class="w3-row sch-row-element">
+      <div class="w3-col s2">
+        <div class="w3-left-align sch-label"><p>Start Time: </p></div>
+      </div>
+      <div class="w3-col s4">
+        <input placeholder="Set Start Time" type="datetime-local" ng-model="testStartTime" class="w3-input w3-border w3-padding">
+      </div>
+      <div class="w3-col s2 sch-coloumn-element">
+        <div class="w3-right-align "><p class="sch-label">Duration (days): </p></div>
+      </div>
+      <div class="w3-col s4 sch-coloumn-element">
+        <input placeholder="Enter number of days" type="number" ng-model="testSchDuration" class="w3-input w3-border w3-padding">
+      </div>
+    </div>
+    <div id="schedulerTestRow"  class="w3-row">      
+      <div class="w3-col s12 w3-right-align">
+        <button ng-click="testScheduler()" class="w3-btn w3-padding w3-green">Test</button>
+      </div>
+</div>
+</div>
+
+
+<ul ng-show="showSchDetails" class="w3-ul">
+    <div id="schedulerListElementHeading"  class="w3-row sch-list-heading">
+        <div class="w3-col s3">Scheduler Name
+        </div>
+        <div class="w3-col s2">StartTime
+        </div>
+        <div class="w3-col s2">EndTime
+        </div>
+        <div class="w3-col s3">Availability
+        </div>
+      </div>
+    <li class="w3-padding-16">
+      <div id="schedulerListElementRow"  class="w3-row">
+        <div class="w3-col s3">{{selectedScheduler.schedulerName}}
+        </div>
+        <div class="w3-col s2">{{getTime12Format(selectedScheduler.startTime)}}
+        </div>
+        <div class="w3-col s2">{{getTime12Format(selectedScheduler.endTime)}}
+        </div>
+        <div class="w3-col s5">{{getAvailableDays(selectedScheduler.daysAvailable)}}
+        </div>
+      </div>
+      </li>
+  </ul>

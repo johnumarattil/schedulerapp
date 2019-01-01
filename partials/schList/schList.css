@@ -1,0 +1,19 @@
+.schedulerDays{
+	padding-top: 20px;
+	padding-bottom:20px;
+}
+.sch-list-heading{
+	    padding: 8px 16px;
+	    font-weight: 700;
+}
+.sch-label{
+	font-weight: 700;
+}
+
+.sch-row-element{
+	padding: 10px 0px;
+}
+
+.sch-coloumn-element{
+	padding: 0px 10px;
+}
